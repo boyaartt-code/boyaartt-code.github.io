@@ -228,6 +228,33 @@ main p,main h1,main h2,main h3,.label,.tags span,.case-num,.fact span,.more b,.m
 @media (max-width:480px){.channels{grid-template-columns:1fr}}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:500 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:24px}
 
+
+/* brief form */
+.brief{display:grid;gap:22px;padding:clamp(22px,4vw,40px);border-radius:28px;background:rgba(11,6,7,.55);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.brief-head h3{font:400 clamp(26px,3vw,36px)/1.1 var(--f-display);letter-spacing:-.03em;margin-bottom:8px}
+.brief-head p{color:var(--muted)}
+.brief-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:640px){.brief-grid{grid-template-columns:1fr}}
+.fld{display:grid;gap:8px;min-width:0}
+.fld span,.chips legend{font:500 12px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fld input,.fld textarea{width:100%;font:500 16px var(--f-body);color:var(--fg);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:14px 16px;transition:border-color .25s,background .25s;resize:vertical}
+.fld input::placeholder,.fld textarea::placeholder{color:rgba(247,239,240,.4)}
+.fld input:focus,.fld textarea:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,.08)}
+.fld .bad{border-color:#FF7A8A}
+.chips{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips legend{margin-bottom:10px;padding:0}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:10px 16px;border-radius:99px;border:1px solid var(--line);font-weight:600;font-size:14px;transition:all .25s}
+.chips label:hover span{border-color:rgba(224,137,154,.6)}
+.chips input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chips input:focus-visible+span{outline:2px solid var(--accent);outline-offset:3px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.brief-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.f-status{font-weight:600;font-size:15px}
+.f-status.ok{color:#7FE0A6}.f-status.err{color:#FF9AA8}
+#f-send[disabled]{opacity:.6;cursor:wait}
+
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:70;background:rgba(8,4,5,.94);backdrop-filter:blur(8px);display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:max(64px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
 .lb:not([hidden]) img{animation:zoomIn .5s var(--ease)}
@@ -530,6 +557,27 @@ nav a.active:not(.nav-cta){color:var(--fg);background:rgba(255,255,255,.08)}
 <footer class="contact" id="contact">
   <div class="wrap">
     <h2 class="rv">Давайте<br>сделаем <b>красиво</b></h2>
+    <form class="brief rv" id="brief" novalidate>
+      <div class="brief-head"><h3>Оставить заявку</h3><p>Опишите задачу — я отвечу в течение дня.</p></div>
+      <div class="brief-grid">
+        <label class="fld"><span>Ваше имя</span><input id="f-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Анна"></label>
+        <label class="fld"><span>Как с вами связаться</span><input id="f-contact" name="contact" type="text" required maxlength="120" placeholder="@telegram или телефон"></label>
+      </div>
+      <fieldset class="chips"><legend>Что нужно сделать</legend>
+        <label><input type="radio" name="task" value="Логотип / фирменный стиль" checked><span>Логотип и стиль</span></label>
+        <label><input type="radio" name="task" value="Оформление соцсетей"><span>Соцсети</span></label>
+        <label><input type="radio" name="task" value="Презентация / гайд"><span>Презентация, гайд</span></label>
+        <label><input type="radio" name="task" value="Сайт / лонгрид"><span>Сайт, лонгрид</span></label>
+        <label><input type="radio" name="task" value="Баннеры / полиграфия"><span>Баннеры, полиграфия</span></label>
+        <label><input type="radio" name="task" value="Другое"><span>Другое</span></label>
+      </fieldset>
+      <label class="fld"><span>Опишите задачу</span><textarea id="f-msg" name="message" rows="4" maxlength="2000" placeholder="Что за проект, сроки, примеры, которые нравятся"></textarea></label>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="brief-foot">
+        <button class="btn primary" type="submit" id="f-send"><span class="lbl">Отправить заявку</span> <span class="arr">→</span></button>
+        <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
     <div class="channels rv">
       <div class="ch"><span class="label">Telegram</span><span class="ch-val">@v_boyarskaya</span><div class="ch-row"><a href="https://t.me/v_boyarskaya" target="_blank" rel="noopener">Написать</a></div></div>
       <div class="ch"><span class="label">Email</span><span class="ch-val">boya.artt@gmail.com</span><div class="ch-row"><button type="button" data-copy="boya.artt@gmail.com">Скопировать</button></div></div>
@@ -699,6 +747,26 @@ nav a.active:not(.nav-cta){color:var(--fg);background:rgba(255,255,255,.08)}
     function upd(){var mid=sc.scrollTop+sc.clientHeight/2,n=1;imgs.forEach(function(im,i){if(im.offsetTop<=mid)n=i+1;});pg.textContent='стр. '+n+' / '+imgs.length;}
     sc.addEventListener('scroll',upd,{passive:true});
   });
+
+
+  /* ---- brief form → Telegram via worker ---- */
+  var FORM_ENDPOINT='https://valeria-brief.boya-artt.workers.dev';
+  var form=document.getElementById('brief');
+  if(form){form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var st=document.getElementById('f-status'),btn=document.getElementById('f-send'),lbl=btn.querySelector('.lbl');
+    var F=form.elements,name=F['name'].value.trim(),contact=F['contact'].value.trim();
+    F['name'].classList.toggle('bad',!name);F['contact'].classList.toggle('bad',!contact);
+    if(!name||!contact){st.className='f-status err';st.textContent='Укажите имя и как с вами связаться.';return;}
+    if(F['website'].value){st.className='f-status ok';st.textContent='Заявка отправлена!';return;}
+    if(!FORM_ENDPOINT){st.className='f-status err';st.textContent='Форма ещё настраивается. Напишите мне в Telegram: @v_boyarskaya';return;}
+    btn.disabled=true;lbl.textContent='Отправляю…';st.className='f-status';st.textContent='';
+    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,contact:contact,task:(form.querySelector('input[name=task]:checked')||{}).value||'',message:F['message'].value.trim(),page:location.href})})
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+    .then(function(){form.reset();st.className='f-status ok';st.textContent='Заявка отправлена! Отвечу в течение дня.';})
+    .catch(function(){st.className='f-status err';st.textContent='Не получилось отправить. Напишите мне в Telegram: @v_boyarskaya';})
+    .finally(function(){btn.disabled=false;lbl.textContent='Отправить заявку';});
+  });}
 
   /* ---- lightbox + copy ---- */
   var lb=document.getElementById('lb'),img=document.getElementById('lbImg'),lastF=null;
