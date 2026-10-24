@@ -343,6 +343,14 @@ main p,main h1,main h2,main h3,.label,.tags span,.case-num,.fact span,.more b,.m
 @keyframes viewIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 nav a.active:not(.nav-cta){color:var(--fg);background:rgba(255,255,255,.08)}
 
+
+/* wide screens: scale the whole layout up proportionally */
+@media (min-width:1600px){header,main,footer,.lb{zoom:1.12}}
+@media (min-width:1800px){header,main,footer,.lb{zoom:1.25}}
+@media (min-width:2100px){header,main,footer,.lb{zoom:1.42}}
+@media (min-width:2500px){header,main,footer,.lb{zoom:1.65}}
+@media (min-width:3200px){header,main,footer,.lb{zoom:2}}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
