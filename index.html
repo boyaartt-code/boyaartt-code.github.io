@@ -107,7 +107,7 @@ main,footer{position:relative;z-index:1}
 /* scroll-driven reveal (progressive; visible at rest when unsupported) */
 @supports (animation-timeline:view()){
   .rv{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
-  @keyframes reveal{from{opacity:.15;transform:translateY(48px) scale(.985)}to{opacity:1;transform:none}}
+  @keyframes reveal{from{transform:translateY(40px)}to{transform:none}}
   .case .media{animation:mediaIn linear both;animation-timeline:view();animation-range:entry 0% cover 35%}
   @keyframes mediaIn{from{clip-path:inset(12% 8% 12% 8% round 28px);transform:translateY(40px)}to{clip-path:inset(0 0 0 0 round 0px);transform:none}}
 }
@@ -135,7 +135,7 @@ section{padding-block:128px 0;position:relative}
 /* cases */
 .case{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:56px;padding-block:72px;border-top:1px solid var(--line)}
 .case:first-of-type{border-top:0;padding-top:0}
-.case-info{display:flex;flex-direction:column;gap:18px;position:sticky;top:110px;align-self:start}
+.case-info{opacity:1;display:flex;flex-direction:column;gap:18px;position:sticky;top:110px;align-self:start}
 .case-num{font:500 12px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
 .case h3{font-size:clamp(30px,3.4vw,44px);font-weight:300;letter-spacing:-.04em}
 .case-info p{color:var(--muted);font-size:16px}
@@ -362,7 +362,7 @@ nav a.active:not(.nav-cta){color:var(--fg);background:rgba(255,255,255,.08)}
       <div class="sec-head rv"><div><span class="label eyebrow">2025–2026</span><h2>Избранные <em>работы</em></h2></div><p>Нажмите на картинку, чтобы открыть её крупно. Сайты на «живых экранах» прокручиваются сами, а остановить можно наведением или касанием.</p></div>
 
       <article class="case">
-        <div class="case-info rv">
+        <div class="case-info">
           <span class="case-num">01 — Гайд · PDF</span>
           <h3>Your Fit Queen</h3>
           <p>Дизайн гайда «Питание без крайностей» для фитнес-блогера: обложка, содержание на 14 глав и система вёрстки внутренних страниц. Спокойная лавандовая палитра и много воздуха, чтобы текст о питании читался легко.</p>
@@ -383,7 +383,7 @@ nav a.active:not(.nav-cta){color:var(--fg);background:rgba(255,255,255,.08)}
       </article>
 
       <article class="case">
-        <div class="case-info rv">
+        <div class="case-info">
           <span class="case-num">02 — Соцсети · ВКонтакте</span>
           <h3>Фитнес с Полли</h3>
           <p>Оформление сообщества фитнес-тренера: обложка, аватар, шаблоны постов и сторис, блоки меню и виджеты. Розово-голубая палитра и объёмные гантели задают лёгкое настроение «без пафоса, но с заботой».</p>
@@ -402,7 +402,7 @@ nav a.active:not(.nav-cta){color:var(--fg);background:rgba(255,255,255,.08)}
       </article>
 
       <article class="case">
-        <div class="case-info rv">
+        <div class="case-info">
           <span class="case-num">03 — Лонгрид · SaaS</span>
           <h3>Pulse</h3>
           <p>Лонгрид для агентной платформы в Telegram: ИИ-агенты находят заинтересованных клиентов и сами вступают в диалог. Стеклянные 3D-элементы и мессенджерные интерфейсы показывают продукт в действии.</p>
@@ -419,7 +419,7 @@ nav a.active:not(.nav-cta){color:var(--fg);background:rgba(255,255,255,.08)}
       </article>
 
       <article class="case">
-        <div class="case-info rv">
+        <div class="case-info">
           <span class="case-num">04 — Сайт · Интерьеры</span>
           <h3>DesignFly</h3>
           <p>Одностраничный сайт студии дизайна интерьеров из Петербурга: услуги, портфолио, прайс, этапы работы и форма заявки. Бордовый с графитом и бабочки как фирменный мотив, чтобы сайт ощущался как дорогой интерьер.</p>
